@@ -16,6 +16,7 @@
       "Effect": "Allow",
       "Principal": {
         "AWS": [
+          "arn:aws:iam::${account_id}:root",
           "${key_admin_arn}"
         ]
       },
@@ -40,6 +41,7 @@
       "Effect": "Allow",
       "Principal": {
         "AWS": [
+          "arn:aws:iam::${account_id}:root",
           "${key_admin_arn}"
         ]
       },
@@ -57,6 +59,7 @@
       "Effect": "Allow",
       "Principal": {
         "AWS": [
+        "arn:aws:iam::${account_id}:root",
         "${key_admin_arn}"
         ]
       },
