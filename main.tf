@@ -259,7 +259,7 @@ resource "aws_instance" "pritunl" {
   instance_type     = "${var.instance_type}"
   key_name          = "${var.aws_key_name}"
   user_data         = "${data.template_file.user_data.rendered}"
-  source_dest_check = true
+  source_dest_check = false
 
   vpc_security_group_ids = [
     "${aws_security_group.pritunl.id}",
