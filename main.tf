@@ -10,8 +10,8 @@ data "template_file" "user_data" {
   template = "${file("${path.module}/templates/user_data.sh.tpl")}"
 
   vars {
-    aws_region          = "${data.aws_region.current.name}"
-    s3_backup_bucket    = "${local.backup_bucket_name}"
+    aws_region       = "${data.aws_region.current.name}"
+    s3_backup_bucket = "${local.backup_bucket_name}"
   }
 }
 
@@ -255,10 +255,11 @@ resource "aws_security_group" "allow_from_office" {
 }
 
 resource "aws_instance" "pritunl" {
-  ami           = "${var.ami_id}"
-  instance_type = "${var.instance_type}"
-  key_name      = "${var.aws_key_name}"
-  user_data     = "${data.template_file.user_data.rendered}"
+  ami               = "${var.ami_id}"
+  instance_type     = "${var.instance_type}"
+  key_name          = "${var.aws_key_name}"
+  user_data         = "${data.template_file.user_data.rendered}"
+  source_dest_check = true
 
   vpc_security_group_ids = [
     "${aws_security_group.pritunl.id}",
